@@ -14463,19 +14463,6 @@
       }
     }
   },
-  "Promise": {
-    "!type": "fn(init: fn(resolve: object, reject: object))",
-    "!url": "http://developer.mozilla.org/en-US/docs/Web/API/Promise",
-    "!doc": "The Promise object is used for deferred and asynchronous computations. A Promise represents an operation that hasn't completed yet, but is expected to in the future.",
-    "resolve": "fn(value?: ?) -> +Promise[value=?]",
-    "reject": "fn(value?: ?) -> +Promise[value=void]",
-    "all": "fn(iterable: [?]) -> +Promise[value=?]",
-    "race": "fn(iterable: [?]) -> +Promise[value=?]",
-    "prototype": {
-      "then": "fn(fulfillCallback?: fn(value: ?), rejectCallback?: fn(value: ?)) -> +Promise[value=?]",
-      "catch": "fn(rejectCallback?: fn(value: ?)) -> +Promise[value=?]"
-    }
-  },
   "UncaughtRejectionObserver": {
     "onLeftUncaught": "fn(p: +Promise)",
     "onConsumed": "fn(p: +Promise)"
