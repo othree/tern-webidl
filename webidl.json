@@ -669,6 +669,7 @@
     "DataErrorEventInit": {
       "message": "string"
     },
+    "DataStoreKey": "string|number",
     "DataStoreTask": {
       "revisionId": "string",
       "operation": "DataStoreOperation",
@@ -811,6 +812,9 @@
       "bubbles": "bool",
       "cancelable": "bool"
     },
+    "EventHandler": "fn(event: +Event)",
+    "OnBeforeUnloadEventHandler": "fn(event: +Event)",
+    "OnErrorEventHandler": "fn(event: +Event, source?: string, lineno?: number, column?: number, error?: ?)",
     "GlobalEventHandlers": {
       "!url": "http://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers",
       "!doc": "The GlobalEventHandlers interface describes the event handlers common to several interfaces like HTMLElement, Document, Window, or WorkerGlobalScope for Web Workers. Each of these interfaces can implement more event handlers.",
@@ -1020,6 +1024,7 @@
       "withCredentials": "bool"
     },
     "ExtendableEventInit": {},
+    "BodyInit": "+ArrayBuffer|ArrayBufferView|+Blob|+FormData|string|+URLSearchParams",
     "Body": {
       "!url": "http://developer.mozilla.org/en-US/docs/Web/API/Body",
       "!doc": "The Body mixin of the Fetch API represents the body of the response/request, allowing you to declare what its content type is and how it should be handled.",
@@ -1044,7 +1049,7 @@
         "!doc": "The formData() method of the Body mixin takes a Response stream and reads it to completion. It returns a promise that resolves with a FormData object."
       },
       "json": {
-        "!type": "fn() -> +Promise[value=JSON]",
+        "!type": "fn() -> +Promise[value=object]",
         "!url": "http://developer.mozilla.org/en-US/docs/Web/API/Body/json",
         "!doc": "The json() method of the Body mixin takes a Response stream and reads it to completion. It returns a promise that resolves with an object literal containing the JSON data."
       },
@@ -1079,6 +1084,7 @@
     "FocusEventInit": {
       "relatedTarget": "EventTarget"
     },
+    "BinaryData": "+ArrayBuffer|ArrayBufferView",
     "FontFaceDescriptors": {
       "style": "string",
       "weight": "string",
@@ -1097,6 +1103,7 @@
     "FontFaceSource": {
       "fonts": "FontFaceSet"
     },
+    "FormDataEntryValue": "+File|string",
     "GamepadAxisMoveEventInit": {
       "axis": "number",
       "value": "number"
@@ -1145,6 +1152,7 @@
       "convertRectFromNode": "fn(rect: DOMRectReadOnly, from: GeometryNode, options?: ConvertCoordinateOptions) -> +DOMQuad",
       "convertPointFromNode": "fn(point: DOMPointInit, from: GeometryNode, options?: ConvertCoordinateOptions) -> +DOMPoint"
     },
+    "GeometryNode": "+Text|HTMLElement|+Document",
     "GetUserMediaRequest": {
       "windowID": "number",
       "innerWindowID": "number",
@@ -1213,10 +1221,12 @@
       "name": "string",
       "value": "string"
     },
+    "PropertyValueArray": "[?]",
     "HashChangeEventInit": {
       "oldURL": "string",
       "newURL": "string"
     },
+    "HeadersInit": "+Headers|[[string]]|+MozMap[value=string]",
     "IDBEnvironment": {
       "!url": "http://developer.mozilla.org/en-US/docs/Web/API/IDBEnvironment",
       "!doc": "The IDBEnvironment interface of the IndexedDB API contains the indexedDB property, which provides access to IndexedDB functionality. It is the top level IndexedDB interface implemented by the window and Worker objects.",
@@ -1451,6 +1461,10 @@
       "browserWindow": "number",
       "scrollWithPage": "bool"
     },
+    "ConstrainLong": "number|ConstrainLongRange",
+    "ConstrainDouble": "number|ConstrainDoubleRange",
+    "ConstrainBoolean": "bool|ConstrainBooleanParameters",
+    "ConstrainDOMString": "string|[string]|ConstrainDOMStringParameters",
     "MessageEventInit": {
       "data": "?",
       "origin": "string",
@@ -1603,6 +1617,7 @@
     "MozNFCPeerEventInit": {
       "peer": "MozNFCPeer"
     },
+    "MozTagTech": "MozIsoDepTech",
     "MozNFCTagEventInit": {
       "tag": "MozNFCTag",
       "ndefRecords": "[+MozNDEFRecord]"
@@ -2185,6 +2200,8 @@
         "!doc": "The ParentNode.childElementCount read-only property returns an unsigned long representing the number of child elements of the given element."
       }
     },
+    "DOMHighResTimeStamp": "number",
+    "PerformanceEntryList": "[PerformanceEntry]",
     "PluginCrashedEventInit": {
       "pluginDumpID": "string",
       "pluginName": "string",
@@ -2275,6 +2292,7 @@
       "value": "?",
       "reason": "?"
     },
+    "PushMessageDataInit": "string",
     "PushEventInit": {
       "data": "PushMessageDataInit"
     },
@@ -2469,6 +2487,7 @@
     "RecordErrorEventInit": {
       "name": "string"
     },
+    "RequestInfo": "+Request|string",
     "RequestInit": {
       "method": "string",
       "headers": "HeadersInit",
@@ -2625,6 +2644,10 @@
       "stylesheet": "CSSStyleSheet",
       "documentSheet": "bool"
     },
+    "KeyType": "string",
+    "KeyUsage": "string",
+    "NamedCurve": "string",
+    "BigInteger": "Uint8Array",
     "Algorithm": {
       "name": "string"
     },
@@ -2721,6 +2744,9 @@
       "publicKey": "CryptoKey",
       "privateKey": "CryptoKey"
     },
+    "KeyFormat": "string",
+    "CryptoOperationData": "ArrayBufferView|+ArrayBuffer",
+    "AlgorithmIdentifier": "object|string",
     "TVGetProgramsOptions": {
       "startTime": "number",
       "duration": "number"
@@ -2978,6 +3004,22 @@
       "prototype": "object",
       "extends": "string"
     },
+    "GLint64": "number",
+    "GLuint64": "number",
+    "GLenum": "number",
+    "GLboolean": "bool",
+    "GLbitfield": "number",
+    "GLbyte": "number",
+    "GLshort": "number",
+    "GLint": "number",
+    "GLsizei": "number",
+    "GLintptr": "number",
+    "GLsizeiptr": "number",
+    "GLubyte": "number",
+    "GLushort": "number",
+    "GLuint": "number",
+    "GLfloat": "unrestricted float",
+    "GLclampf": "unrestricted float",
     "WebGLContextAttributes": {
       "alpha": "bool",
       "depth": "bool",
@@ -3133,6 +3175,7 @@
       "usageFlag": "number",
       "nickname": "string"
     },
+    "Transferable": "?",
     "WindowTimers": {
       "!url": "http://developer.mozilla.org/en-US/docs/Web/API/WindowTimers",
       "!doc": "WindowTimers contains utility methods to set and clear timers.",
@@ -14888,7 +14931,7 @@
         "!doc": "The formData() method of the Body mixin takes a Response stream and reads it to completion. It returns a promise that resolves with a FormData object."
       },
       "json": {
-        "!type": "fn() -> +Promise[value=JSON]",
+        "!type": "fn() -> +Promise[value=object]",
         "!url": "http://developer.mozilla.org/en-US/docs/Web/API/Body/json",
         "!doc": "The json() method of the Body mixin takes a Response stream and reads it to completion. It returns a promise that resolves with an object literal containing the JSON data."
       },
@@ -15041,7 +15084,7 @@
         "!doc": "The formData() method of the Body mixin takes a Response stream and reads it to completion. It returns a promise that resolves with a FormData object."
       },
       "json": {
-        "!type": "fn() -> +Promise[value=JSON]",
+        "!type": "fn() -> +Promise[value=object]",
         "!url": "http://developer.mozilla.org/en-US/docs/Web/API/Body/json",
         "!doc": "The json() method of the Body mixin takes a Response stream and reads it to completion. It returns a promise that resolves with an object literal containing the JSON data."
       },
