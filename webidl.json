@@ -409,8 +409,8 @@
       "reason": "string"
     },
     "ConsoleEvent": {
-      "ID": "?",
-      "innerID": "?",
+      "ID": "number|string",
+      "innerID": "number|string",
       "level": "string",
       "filename": "string",
       "lineNumber": "number",
@@ -470,8 +470,8 @@
       "ideal": "bool"
     },
     "ConstrainDOMStringParameters": {
-      "exact": "?",
-      "ideal": "?"
+      "exact": "string|[string]",
+      "ideal": "string|[string]"
     },
     "ContactAddress": {
       "type": "[string]",
@@ -551,7 +551,7 @@
         "!doc": "The save method is used to store a contact inside the device's contact database. If the contact is already in the database (based on its id), it is updated, otherwise it is created."
       },
       "remove": {
-        "!type": "fn(contactOrId: ?) -> DOMRequest",
+        "!type": "fn(contactOrId: +mozContact) -> DOMRequest",
         "!url": "http://developer.mozilla.org/en-US/docs/Web/API/ContactManager/remove",
         "!doc": "The remove method is used to delete a contact from the device's contact database."
       },
@@ -765,13 +765,13 @@
       "name": "string",
       "createFile": "fn(path: string, options?: CreateFileOptions) -> +Promise[value=+File]",
       "createDirectory": "fn(path: string) -> +Promise[value=Directory]",
-      "get": "fn(path: string) -> +Promise[value=?]",
-      "remove": "fn(path: ?) -> +Promise[value=bool]",
-      "removeDeep": "fn(path: ?) -> +Promise[value=bool]"
+      "get": "fn(path: string) -> +Promise[value=+File|Directory]",
+      "remove": "fn(path: string) -> +Promise[value=bool]",
+      "removeDeep": "fn(path: string) -> +Promise[value=bool]"
     },
     "CreateFileOptions": {
       "ifExists": "CreateIfExistsMode",
-      "data": "?"
+      "data": "string|+Blob|+ArrayBuffer|ArrayBufferView"
     },
     "DownloadEventInit": {
       "download": "DOMDownload"
@@ -1239,7 +1239,7 @@
       "multiEntry": "bool"
     },
     "IDBObjectStoreParameters": {
-      "keyPath": "?",
+      "keyPath": "string|[string]",
       "autoIncrement": "bool"
     },
     "IDBVersionChangeEventInit": {
@@ -1419,8 +1419,8 @@
       "mimeType": "string"
     },
     "MediaStreamConstraints": {
-      "audio": "?",
-      "video": "?",
+      "audio": "bool|MediaTrackConstraints",
+      "video": "bool|MediaTrackConstraints",
       "picture": "bool",
       "fake": "bool",
       "fakeTracks": "bool",
@@ -1455,7 +1455,7 @@
       "data": "?",
       "origin": "string",
       "lastEventId": "string",
-      "source": "?",
+      "source": "Window|MessagePort",
       "ports": "[MessagePort]"
     },
     "MessagePortList": {
@@ -1550,7 +1550,7 @@
       "success": "bool",
       "serviceCode": "string",
       "statusMessage": "string",
-      "additionalInformation": "?"
+      "additionalInformation": "number|object"
     },
     "MozClirStatus": {
       "n": "number",
@@ -2279,7 +2279,7 @@
       "data": "PushMessageDataInit"
     },
     "RTCIceServer": {
-      "urls": "?",
+      "urls": "string|[string]",
       "url": "string",
       "credential": "string",
       "username": "string"
@@ -2752,7 +2752,7 @@
       "innerDictionary": "TestInterfaceJSDictionary2",
       "objectMember": "object",
       "anyMember": "?",
-      "objectOrStringMember": "?",
+      "objectOrStringMember": "object|string",
       "anySequenceMember": "[?]"
     },
     "TextDecoderOptions": {
@@ -2762,7 +2762,7 @@
       "stream": "bool"
     },
     "TrackEventInit": {
-      "track": "?"
+      "track": "VideoTrack|AudioTrack|TextTrack"
     },
     "TransitionEventInit": {
       "propertyName": "string",
@@ -3927,7 +3927,7 @@
     "passThrough": "bool"
   },
   "Blob": {
-    "!type": "fn(blobParts: [?], options?: BlobPropertyBag)",
+    "!type": "fn(blobParts: [+ArrayBuffer|ArrayBufferView|+Blob|string], options?: BlobPropertyBag)",
     "!url": "http://developer.mozilla.org/en-US/docs/Web/API/Blob",
     "!doc": "A Blob object represents a file-like object of immutable, raw data. Blobs represent data that isn't necessarily in a JavaScript-native format. The File interface is based on Blob, inheriting blob functionality and expanding it to support files on the user's system.",
     "prototype": {
@@ -6365,12 +6365,12 @@
       "!doc": "The CanvasRenderingContext2D.globalCompositeOperation property of the Canvas 2D API sets the type of compositing operation to apply when drawing new shapes, where type is a string identifying which of the compositing or blending mode operations to use."
     },
     "strokeStyle": {
-      "!type": "?",
+      "!type": "string|CanvasGradient|CanvasPattern",
       "!url": "http://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/strokeStyle",
       "!doc": "The CanvasRenderingContext2D.strokeStyle property of the Canvas 2D API specifies the color or style to use for the lines around shapes. The default is #000 (black)."
     },
     "fillStyle": {
-      "!type": "?",
+      "!type": "string|CanvasGradient|CanvasPattern",
       "!url": "http://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillStyle",
       "!doc": "The CanvasRenderingContext2D.fillStyle property of the Canvas 2D API specifies the color or style to use inside shapes. The default is #000 (black)."
     },
@@ -6385,7 +6385,7 @@
       "!doc": "The CanvasRenderingContext2D.createRadialGradient() method of the Canvas 2D API creates a radial gradient given by the coordinates of the two circles represented by the parameters. This method returns a CanvasGradient."
     },
     "createPattern": {
-      "!type": "fn(image: ?, repetition: string) -> CanvasPattern",
+      "!type": "fn(image: +HTMLImageElement, repetition: string) -> CanvasPattern",
       "!url": "http://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/createPattern",
       "!doc": "The CanvasRenderingContext2D.createPattern() method of the Canvas 2D API creates a pattern using the specified image (a CanvasImageSource). It repeats the source in the directions specified by the repetition argument. This method returns a CanvasPattern."
     },
@@ -6481,7 +6481,7 @@
       "!doc": "The CanvasRenderingContext2D.measureText() method returns a TextMetrics object that contains information about the measured text (such as its width for example)."
     },
     "drawImage": {
-      "!type": "fn(image: ?, dx: number, dy: number)",
+      "!type": "fn(image: +HTMLImageElement, dx: number, dy: number)",
       "!url": "http://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage",
       "!doc": "The CanvasRenderingContext2D.drawImage() method of the Canvas 2D API provides different ways to draw an image onto the canvas."
     },
@@ -7029,7 +7029,7 @@
   },
   "DOMMobileMessageError": {
     "!proto": "DOMError.prototype",
-    "data": "?"
+    "data": "MozSmsMessage|MozMmsMessage"
   },
   "Principal": {},
   "URI": {},
@@ -8842,7 +8842,7 @@
         "!doc": "The isReload read-only property of the FetchEvent interface returns true if the event was dispatched by the user attempting to reload the page, and false otherwise. Pressing the refresh button is a reload while clicking a link and pressing the back button is not."
       },
       "respondWith": {
-        "!type": "fn(r: ?)",
+        "!type": "fn(r: +Response)",
         "!url": "http://developer.mozilla.org/en-US/docs/Web/API/FetchEvent/respondWith",
         "!doc": "The respondWith() method of the FetchEvent interface is intended for containing code that generates custom responses to the requests coming from the controlled page. This code will resolve by returning a Response or a network error  to Fetch."
       }
@@ -8959,7 +8959,7 @@
     }
   },
   "FontFace": {
-    "!type": "fn(family: string, source: ?, descriptors?: FontFaceDescriptors)",
+    "!type": "fn(family: string, source: string, descriptors?: FontFaceDescriptors)",
     "prototype": {
       "family": "string",
       "style": "string",
@@ -9125,8 +9125,8 @@
   "HTMLAllCollection": {
     "length": "number",
     "item": "fn(index: number) -> Node",
-    "namedItem": "fn(name: string) -> ?",
-    "<i>": "?"
+    "namedItem": "fn(name: string) -> Node|HTMLCollection",
+    "<i>": "Node|HTMLCollection"
   },
   "HTMLAnchorElement": {
     "!url": "http://developer.mozilla.org/en-US/docs/Web/API/HTMLAnchorElement",
@@ -9850,11 +9850,11 @@
     "!doc": "The HTMLFormControlsCollection interface represents a collection of HTML form control elements. It replaces one method of HTMLCollection.",
     "!proto": "HTMLCollection",
     "namedItem": {
-      "!type": "fn(name: string) -> ?",
+      "!type": "fn(name: string) -> RadioNodeList|HTMLElement",
       "!url": "http://developer.mozilla.org/en-US/docs/Web/API/HTMLFormControlsCollection/namedItem",
       "!doc": "Note that this version of namedItem() hide the one inherited from HTMLCollection. Like that one, in JavaScript, using the array bracket syntax with a String, like collection[\"value\"] is equivalent to collection.namedItem(\"value\")."
     },
-    "<i>": "?"
+    "<i>": "RadioNodeList|HTMLElement"
   },
   "HTMLFormElement": {
     "!url": "http://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement",
@@ -10450,7 +10450,7 @@
     "!doc": "HTMLOptionsCollection is an interface representing a collection of HTML option elements (in document order) and offers methods and properties for traversing the list as well as optionally altering its items. This type is returned solely by the \"options\" property of select.",
     "!proto": "HTMLCollection",
     "length": "number",
-    "add": "fn(element: ?, before?: ?)",
+    "add": "fn(element: +HTMLOptionElement, before?: HTMLElement)",
     "remove": "fn(index: number)",
     "selectedIndex": "number"
   },
@@ -10564,7 +10564,7 @@
       "!doc": "The HTMLSelectElement.namedItem() method returns the HTMLOptionElement corresponding to the HTMLOptionElement whose name or id match the specified name, or null if no option matches."
     },
     "add": {
-      "!type": "fn(element: ?, before?: ?)",
+      "!type": "fn(element: +HTMLOptionElement, before?: HTMLElement)",
       "!url": "http://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/add",
       "!doc": "The HTMLSelectElement.add() method adds an element to the collection of option elements for this select element."
     },
@@ -10991,7 +10991,7 @@
     "!url": "http://developer.mozilla.org/en-US/docs/Web/API/IDBCursor",
     "!doc": "The IDBCursor interface of the IndexedDB API represents a cursor for traversing or iterating over multiple records in a database.",
     "source": {
-      "!type": "?",
+      "!type": "IDBObjectStore|IDBIndex",
       "!url": "http://developer.mozilla.org/en-US/docs/Web/API/IDBCursor/source",
       "!doc": "The source property of the IDBCursor interface returns the IDBObjectStore or IDBIndex that the cursor is iterating over. This function never returns null or throws an exception, even if the cursor is currently being iterated, has iterated past its end, or its transaction is not active."
     },
@@ -11071,7 +11071,7 @@
       "!doc": "The deleteObjectStore() method of the IDBDatabase interface destroys the object store with the given name in the connected database, along with any indexes that reference it."
     },
     "transaction": {
-      "!type": "fn(storeNames: ?, mode?: IDBTransactionMode) -> IDBTransaction",
+      "!type": "fn(storeNames: string, mode?: IDBTransactionMode) -> IDBTransaction",
       "!url": "http://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/transaction",
       "!doc": "The transaction method of the IDBDatabase interface immediately returns a transaction object (IDBTransaction) containing the IDBTransaction.objectStore method, which you can use to access your object store."
     },
@@ -11382,7 +11382,7 @@
       "!doc": "The error property of the IDBRequest interface returns the error in the event of an unsuccessful request."
     },
     "source": {
-      "!type": "?",
+      "!type": "IDBObjectStore|IDBIndex|IDBCursor",
       "!url": "http://developer.mozilla.org/en-US/docs/Web/API/IDBRequest/source",
       "!doc": "The source property of the IDBRequest interface returns the source of the request, such as an Index or an object store. If no source exists (such as when calling indexedDB.open), it returns null."
     },
@@ -12313,7 +12313,7 @@
       "!doc": "The MediaKeys.createSession() method returns a new MediaKeySession object, which represents a context for message exchange with a content decryption module (CDM)."
     },
     "setServerCertificate": {
-      "!type": "fn(serverCertificate: ?) -> +Promise[value=void]",
+      "!type": "fn(serverCertificate: ArrayBufferView) -> +Promise[value=void]",
       "!url": "http://developer.mozilla.org/en-US/docs/Web/API/MediaKeys/setServerCertificate",
       "!doc": "The MediaKeys.setServerCertificate() method a Promise to a server certificate to be used to encrypt messages to the license server."
     }
@@ -12534,7 +12534,7 @@
       "data": "?",
       "origin": "string",
       "lastEventId": "string",
-      "source": "?",
+      "source": "WindowProxy|MessagePort|Client",
       "ports": "MessagePortList"
     }
   },
@@ -12742,7 +12742,7 @@
   },
   "MozIcc": {
     "!proto": "EventTarget",
-    "iccInfo": "?",
+    "iccInfo": "MozIccInfo|MozGsmIccInfo|MozCdmaIccInfo",
     "oniccinfochange": "fn(+Event)",
     "cardState": "IccCardState",
     "oncardstatechange": "fn(+Event)",
@@ -13489,7 +13489,7 @@
       "!doc": "The Navigator.serviceWorker read-only property returns a ServiceWorkerContainer object, which provides access to registration, removal, upgrade, and communication with the ServiceWorker objects for the associated document."
     },
     "sendBeacon": {
-      "!type": "fn(url: string, data?: ?) -> bool",
+      "!type": "fn(url: string, data?: ArrayBufferView) -> bool",
       "!url": "http://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon",
       "!doc": "The navigator.sendBeacon() method can be used to asynchronously transfer small HTTP data from the User Agent to a web server."
     },
@@ -14941,7 +14941,7 @@
     "component": "string",
     "serviceType": "SystemService",
     "manifestURL": "string",
-    "getData": "fn() -> [?]",
+    "getData": "fn() -> [NetworkStatsData|PowerStatsData]",
     "start": "DOMTimeStamp",
     "end": "DOMTimeStamp"
   },
@@ -17386,7 +17386,7 @@
     "!doc": "The Telephony interface of the Web Telephony API provides support for dialing, answering, and managing phone calls on a device with telephony support.",
     "!proto": "EventTarget",
     "dial": {
-      "!type": "fn(number: string, serviceId?: number) -> +Promise[value=?]",
+      "!type": "fn(number: string, serviceId?: number) -> +Promise[value=TelephonyCall|MMICall]",
       "!url": "http://developer.mozilla.org/en-US/docs/Web/API/Telephony/dial",
       "!doc": "The dial() method of the Telephony interface dials a phone number and returns a new TelephonyCall object representing the new call."
     },
@@ -17421,7 +17421,7 @@
       "!doc": "The speakerEnabled property of the Telephony interface indicates whether or not the speakerphone functionality of the phone is enabled."
     },
     "active": {
-      "!type": "?",
+      "!type": "TelephonyCall|TelephonyCallGroup",
       "!url": "http://developer.mozilla.org/en-US/docs/Web/API/Telephony/active",
       "!doc": "The active read-only property of the Telephony interface returns a TelephonyCall object indicating the call that is currently active. The active call is the one that is currently receiving input from the microphone, or tones generated by calls to the Telephony.startTone() method."
     },
@@ -17658,23 +17658,23 @@
       "dictionaryAttr": "TestInterfaceJSDictionary",
       "pingPongAny": "fn(arg: ?) -> ?",
       "pingPongObject": "fn(obj: object) -> object",
-      "pingPongObjectOrString": "fn(objOrString: ?) -> ?",
+      "pingPongObjectOrString": "fn(objOrString: object) -> ?",
       "pingPongDictionary": "fn(dict?: TestInterfaceJSDictionary) -> TestInterfaceJSDictionary",
-      "pingPongDictionaryOrLong": "fn(dictOrLong?: ?) -> number",
+      "pingPongDictionaryOrLong": "fn(dictOrLong?: TestInterfaceJSUnionableDictionary) -> number",
       "pingPongMap": "fn(map: +MozMap) -> string",
       "objectSequenceLength": "fn(seq: [object]) -> number",
       "anySequenceLength": "fn(seq: [?]) -> number",
       "getCallerPrincipal": "fn() -> string",
       "convertSVS": "fn(svs: string) -> string",
-      "pingPongUnion": "fn(something: ?) -> ?",
-      "pingPongUnionContainingNull": "fn(something: ?) -> ?",
-      "pingPongNullableUnion": "fn(something: ?) -> ?",
-      "returnBadUnion": "fn() -> ?",
+      "pingPongUnion": "fn(something: +TestInterfaceJS) -> +TestInterfaceJS|number",
+      "pingPongUnionContainingNull": "fn(something: +TestInterfaceJS) -> string|+TestInterfaceJS",
+      "pingPongNullableUnion": "fn(something: +TestInterfaceJS) -> +TestInterfaceJS|number",
+      "returnBadUnion": "fn() -> Location|+TestInterfaceJS",
       "cachedAttr": "number",
       "setCachedAttr": "fn(n: number)",
       "clearCachedAttrCache": "fn()",
       "testSequenceOverload": "fn(arg: [string])",
-      "testSequenceUnion": "fn(arg: ?)",
+      "testSequenceUnion": "fn(arg: [string])",
       "testThrowDOMError": "fn()",
       "testThrowDOMException": "fn()",
       "testPromiseWithThrowingChromePromiseInit": "fn() -> +Promise[value=void]",
@@ -17913,7 +17913,7 @@
     "!type": "fn(type: string, eventInitDict?: TrackEventInit)",
     "prototype": {
       "!proto": "Event.prototype",
-      "track": "?"
+      "track": "VideoTrack|AudioTrack|TextTrack"
     }
   },
   "TransitionEvent": {
@@ -18059,7 +18059,7 @@
       "close": "fn() -> +Promise[value=void]",
       "joinMulticastGroup": "fn(multicastGroupAddress: string)",
       "leaveMulticastGroup": "fn(multicastGroupAddress: string)",
-      "send": "fn(data: ?, remoteAddress?: string, remotePort?: number) -> bool"
+      "send": "fn(data: string, remoteAddress?: string, remotePort?: number) -> bool"
     }
   },
   "UIEvent": {
@@ -18427,7 +18427,7 @@
       "region": "+VTTRegion",
       "vertical": "DirectionSetting",
       "snapToLines": "bool",
-      "line": "?",
+      "line": "number|AutoKeyword",
       "lineAlign": "AlignSetting",
       "position": "number",
       "positionAlign": "AlignSetting",
@@ -18897,11 +18897,11 @@
     "resumeTransformFeedback": "fn()",
     "bindBufferBase": "fn(target: GLenum, index: GLuint, buffer: WebGLBuffer)",
     "bindBufferRange": "fn(target: GLenum, index: GLuint, buffer: WebGLBuffer, offset: GLintptr, size: GLsizeiptr)",
-    "getIndexedParameter": "fn(target: GLenum, index: GLuint) -> ?",
+    "getIndexedParameter": "fn(target: GLenum, index: GLuint) -> WebGLBuffer|GLintptr",
     "getUniformIndices": "fn(program: WebGLProgram, uniformNames: [string]) -> [GLuint]",
     "getActiveUniforms": "fn(program: WebGLProgram, uniformIndices: [GLuint], pname: GLenum) -> [GLint]",
     "getUniformBlockIndex": "fn(program: WebGLProgram, uniformBlockName: string) -> GLuint",
-    "getActiveUniformBlockParameter": "fn(program: WebGLProgram, uniformBlockIndex: GLuint, pname: GLenum) -> ?",
+    "getActiveUniformBlockParameter": "fn(program: WebGLProgram, uniformBlockIndex: GLuint, pname: GLenum) -> GLuint|Uint32Array|GLboolean",
     "getActiveUniformBlockName": "fn(program: WebGLProgram, uniformBlockIndex: GLuint) -> string",
     "uniformBlockBinding": "fn(program: WebGLProgram, uniformBlockIndex: GLuint, uniformBlockBinding: GLuint)"
   },
@@ -19871,7 +19871,7 @@
     "windowRoot": "WindowRoot",
     "console": "Console",
     "sidebar": {
-      "!type": "?",
+      "!type": "External|WindowProxy",
       "!url": "http://developer.mozilla.org/en-US/docs/Web/API/Window/sidebar",
       "!doc": "Returns a sidebar object, which contains several methods for registering add-ons with browser."
     },
@@ -20886,7 +20886,7 @@
   "getInterface": "fn(iid: IID) -> ?",
   "windowRoot": "WindowRoot",
   "console": "Console",
-  "sidebar": "?",
+  "sidebar": "External|WindowProxy",
   "<i>": "object",
   "queryInterface": "fn(iid: IID) -> nsISupports",
   "onabort": {
