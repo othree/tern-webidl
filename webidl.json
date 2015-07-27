@@ -1029,7 +1029,7 @@
         "!doc": "The bodyUsed read-only property of the Body mixin contains a Boolean that indicates whether the body has been read yet."
       },
       "arrayBuffer": {
-        "!type": "fn() -> +Promise[value=ArrayBuffer]",
+        "!type": "fn() -> +Promise[value=+ArrayBuffer]",
         "!url": "http://developer.mozilla.org/en-US/docs/Web/API/Body/arrayBuffer",
         "!doc": "The arrayBuffer() method of the Body mixin takes a Response stream and reads it to completion. It returns a promise that resolves with an ArrayBuffer."
       },
@@ -1396,11 +1396,11 @@
     },
     "MediaKeyNeededEventInit": {
       "initDataType": "string",
-      "initData": "ArrayBuffer"
+      "initData": "+ArrayBuffer"
     },
     "MediaKeyMessageEventInit": {
       "messageType": "MediaKeyMessageType",
-      "message": "ArrayBuffer"
+      "message": "+ArrayBuffer"
     },
     "MediaKeySystemOptions": {
       "initDataType": "string",
@@ -3571,7 +3571,7 @@
         "!doc": "The createBuffer() method of the AudioContext Interface is used to create a new, empty AudioBuffer object, which can then be populated by data, and played via an AudioBufferSourceNode."
       },
       "decodeAudioData": {
-        "!type": "fn(audioData: ArrayBuffer, successCallback?: fn(decodedData: AudioBuffer), errorCallback?: fn()) -> +Promise[value=AudioBuffer]",
+        "!type": "fn(audioData: +ArrayBuffer, successCallback?: fn(decodedData: AudioBuffer), errorCallback?: fn()) -> +Promise[value=AudioBuffer]",
         "!url": "http://developer.mozilla.org/en-US/docs/Web/API/AudioContext/decodeAudioData",
         "!doc": "The decodeAudioData() method of the AudioContext Interface is used to asynchronously decode audio file data contained in an ArrayBuffer. In this case the ArrayBuffer is usually loaded from an XMLHttpRequest's response attribute after setting the responseType to arraybuffer."
       },
@@ -4242,10 +4242,10 @@
     "descriptors": "[BluetoothGattDescriptor]",
     "uuid": "string",
     "instanceId": "number",
-    "value": "ArrayBuffer",
+    "value": "+ArrayBuffer",
     "properties": "GattCharacteristicProperties",
-    "readValue": "fn() -> +Promise[value=ArrayBuffer]",
-    "writeValue": "fn(value: ArrayBuffer) -> +Promise[value=void]",
+    "readValue": "fn() -> +Promise[value=+ArrayBuffer]",
+    "writeValue": "fn(value: +ArrayBuffer) -> +Promise[value=void]",
     "startNotifications": "fn() -> +Promise[value=void]",
     "stopNotifications": "fn() -> +Promise[value=void]"
   },
@@ -4263,9 +4263,9 @@
     "!doc": "The BluetoothGattDescriptor interface of the Web Bluetooth API represents a GATT descriptor, which contains related information about a characteristic value.",
     "characteristic": "BluetoothGattCharacteristic",
     "uuid": "string",
-    "value": "ArrayBuffer",
-    "readValue": "fn() -> +Promise[value=ArrayBuffer]",
-    "writeValue": "fn(value: ArrayBuffer) -> +Promise[value=void]"
+    "value": "+ArrayBuffer",
+    "readValue": "fn() -> +Promise[value=+ArrayBuffer]",
+    "writeValue": "fn(value: +ArrayBuffer) -> +Promise[value=void]"
   },
   "BluetoothGattService": {
     "!url": "http://developer.mozilla.org/en-US/docs/Web/API/BluetoothGattService",
@@ -8939,7 +8939,7 @@
     "!url": "http://developer.mozilla.org/en-US/docs/Web/API/FileReaderSync",
     "!doc": "The FileReaderSync interface allows to read File or Blob objects in a synchronous way.",
     "prototype": {
-      "readAsArrayBuffer": "fn(blob: +Blob) -> ArrayBuffer",
+      "readAsArrayBuffer": "fn(blob: +Blob) -> +ArrayBuffer",
       "readAsBinaryString": "fn(blob: +Blob) -> string",
       "readAsText": "fn(blob: +Blob, encoding?: string) -> string",
       "readAsDataURL": "fn(blob: +Blob) -> string"
@@ -11130,8 +11130,8 @@
     "getMetadata": "fn(parameters?: IDBFileMetadataParameters) -> IDBFileRequest",
     "readAsArrayBuffer": "fn(size: number) -> IDBFileRequest",
     "readAsText": "fn(size: number, encoding?: string) -> IDBFileRequest",
-    "write": "fn(value: ArrayBuffer) -> IDBFileRequest",
-    "append": "fn(value: ArrayBuffer) -> IDBFileRequest",
+    "write": "fn(value: +ArrayBuffer) -> IDBFileRequest",
+    "append": "fn(value: +ArrayBuffer) -> IDBFileRequest",
     "truncate": "fn(size?: number) -> IDBFileRequest",
     "flush": "fn() -> IDBFileRequest",
     "abort": "fn()",
@@ -12197,7 +12197,7 @@
     "prototype": {
       "!proto": "Event.prototype",
       "initDataType": "string",
-      "initData": "ArrayBuffer"
+      "initData": "+ArrayBuffer"
     }
   },
   "MediaError": {
@@ -12223,7 +12223,7 @@
         "!doc": "The MediaKeyMessageEvent.messageType read-only property indicates the type of message. It may be one of license-request, license-renewal, license-renewal, or individualization-request."
       },
       "message": {
-        "!type": "ArrayBuffer",
+        "!type": "+ArrayBuffer",
         "!url": "http://developer.mozilla.org/en-US/docs/Web/API/MediaKeyMessageEvent/message",
         "!doc": "The MediaKeyMessageEvent.message read-only property returns an ArrayBuffer with a message from the content decryption module. Messages vary by key system."
       }
@@ -14504,7 +14504,7 @@
     "!url": "http://developer.mozilla.org/en-US/docs/Web/API/PushMessageData",
     "!doc": "The PushMessageData interface of the Push API provides access to push data sent by a server, and methods to manipulate the data.",
     "arrayBuffer": {
-      "!type": "fn() -> ArrayBuffer",
+      "!type": "fn() -> +ArrayBuffer",
       "!url": "http://developer.mozilla.org/en-US/docs/Web/API/PushMessageData/arrayBuffer",
       "!doc": "The arrayBuffer()method of the PushMessageData interface extracts the data as an ArrayBuffer object."
     },
@@ -14873,7 +14873,7 @@
         "!doc": "The bodyUsed read-only property of the Body mixin contains a Boolean that indicates whether the body has been read yet."
       },
       "arrayBuffer": {
-        "!type": "fn() -> +Promise[value=ArrayBuffer]",
+        "!type": "fn() -> +Promise[value=+ArrayBuffer]",
         "!url": "http://developer.mozilla.org/en-US/docs/Web/API/Body/arrayBuffer",
         "!doc": "The arrayBuffer() method of the Body mixin takes a Response stream and reads it to completion. It returns a promise that resolves with an ArrayBuffer."
       },
@@ -15026,7 +15026,7 @@
         "!doc": "The bodyUsed read-only property of the Body mixin contains a Boolean that indicates whether the body has been read yet."
       },
       "arrayBuffer": {
-        "!type": "fn() -> +Promise[value=ArrayBuffer]",
+        "!type": "fn() -> +Promise[value=+ArrayBuffer]",
         "!url": "http://developer.mozilla.org/en-US/docs/Web/API/Body/arrayBuffer",
         "!doc": "The arrayBuffer() method of the Body mixin takes a Response stream and reads it to completion. It returns a promise that resolves with an ArrayBuffer."
       },
@@ -16978,7 +16978,7 @@
     "timestampOffset": "number",
     "appendWindowStart": "number",
     "appendWindowEnd": "number",
-    "appendBuffer": "fn(data: ArrayBuffer)",
+    "appendBuffer": "fn(data: +ArrayBuffer)",
     "abort": "fn()",
     "remove": "fn(start: number, end: number)"
   },
@@ -18821,7 +18821,7 @@
     "TEXTURE_IMMUTABLE_LEVELS": "GLenum",
     "TIMEOUT_IGNORED": "GLint64",
     "copyBufferSubData": "fn(readTarget: GLenum, writeTarget: GLenum, readOffset: GLintptr, writeOffset: GLintptr, size: GLsizeiptr)",
-    "getBufferSubData": "fn(target: GLenum, offset: GLintptr, returnedData: ArrayBuffer)",
+    "getBufferSubData": "fn(target: GLenum, offset: GLintptr, returnedData: +ArrayBuffer)",
     "blitFramebuffer": "fn(srcX0: GLint, srcY0: GLint, srcX1: GLint, srcY1: GLint, dstX0: GLint, dstY0: GLint, dstX1: GLint, dstY1: GLint, mask: GLbitfield, filter: GLenum)",
     "framebufferTextureLayer": "fn(target: GLenum, attachment: GLenum, texture: GLuint, level: GLint, layer: GLint)",
     "getInternalformatParameter": "fn(target: GLenum, internalformat: GLenum, pname: GLenum) -> ?",
